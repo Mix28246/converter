@@ -10,4 +10,9 @@ float meters_to_kilometers(float m) {
 
 float liters_to_gallons(float l) {
     return l * 0.264172;
+
+}
+
+float kmh_to_ms(float kmh) {
+    return kmh / 3.6;
 }
