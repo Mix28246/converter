@@ -16,3 +16,7 @@ float liters_to_gallons(float l) {
 float kmh_to_ms(float kmh) {
     return kmh / 3.6;
 }
+
+float joules_to_calories(float j) {
+    return j * 0.238846;
+}
