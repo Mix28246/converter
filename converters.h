@@ -1,18 +1,21 @@
 #ifndef CONVERTERS_H
 #define CONVERTERS_H
 
+// Температура и расстояние
 float convert_to_fahrenheit(float celsius);
-float fahrenheit_to_celsius(float f);
 float meters_to_kilometers(float m);
-float kmh_to_ms(float kmh);
+
+// Объем и скорость
 float liters_to_gallons(float l);
-float kg_to_pounds(float kg);
+float kmh_to_ms(float kmh);
+
+// Энергия и время
 float joules_to_calories(float j);
-float calories_to_joules(float cal);
 float hours_to_minutes(float h);
-float psi_to_bar(float psi);
+
+// Данные, давление и углы
 float gb_to_mb(float gb);
+float psi_to_bar(float psi);
 float degrees_to_radians(float deg);
 
-#endif
 #endif
