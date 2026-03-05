@@ -15,3 +15,7 @@ float liters_to_gallons(float l) {
 float hours_to_minutes(float h) {
     return h * 60.0;
 }
+
+float gb_to_mb(float gb) {
+    return gb * 1024.0;
+}
