@@ -43,5 +43,5 @@ int main() {
     }
 
     printf("Программа завершена.\n");
-    return 0;
+    return 0; 
 }
