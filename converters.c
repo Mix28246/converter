@@ -11,3 +11,7 @@ float meters_to_kilometers(float m) {
 float liters_to_gallons(float l) {
     return l * 0.264172;
 }
+
+float hours_to_minutes(float h) {
+    return h * 60.0;
+}
