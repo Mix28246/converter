@@ -10,7 +10,6 @@ float meters_to_kilometers(float m) {
 
 float liters_to_gallons(float l) {
     return l * 0.264172;
-
 }
 
 float kmh_to_ms(float kmh) {
@@ -36,4 +35,3 @@ float psi_to_bar(float psi) {
 float degrees_to_radians(float deg) {
     return deg * (3.14159 / 180.0);
 }
-
