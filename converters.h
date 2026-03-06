@@ -20,5 +20,9 @@ float psi_to_bar(float psi);
 // Углы и деньги
 float degrees_to_radians(float deg);
 float rubles_to_dollars(float r);
+// Данные, давление и углы
+float gb_to_mb(float gb);
+float psi_to_bar(float psi);
+float degrees_to_radians(float deg);
 
 #endif
