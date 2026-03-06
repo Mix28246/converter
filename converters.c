@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <curl/curl.h>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
 
 char buf[8192];
 
@@ -61,4 +64,87 @@ float rubles_to_dollars(float r) {
         
     curl_easy_cleanup(curl);    
     return r / kurs;
+}
+
+float random_conversion(void) {
+    static int initialized = 0;
+    if (!initialized) {
+        srand(time(NULL));
+        initialized = 1;
+    }
+    
+    float random_value = ((float)rand() / RAND_MAX) * 100.0f;
+    
+    int random_action = rand() % 10 + 1;
+    
+    printf("\n=== СЛУЧАЙНОЕ ПРЕОБРАЗОВАНИЕ ===\n");
+    printf("Сгенерированное число: %.2f\n", random_value);
+    printf("Случайное действие: ");
+    
+    float result;
+    
+    switch (random_action) {
+        case 1:
+            printf("Цельсии -> Фаренгейты\n");
+            result = convert_to_fahrenheit(random_value);
+            printf("Результат: %.2f F\n", result);
+            break;
+            
+        case 2:
+            printf("Метры -> Километры\n");
+            result = meters_to_kilometers(random_value);
+            printf("Результат: %.3f KM\n", result);
+            break;
+            
+        case 3:
+            printf("Литры -> Галлоны\n");
+            result = liters_to_gallons(random_value);
+            printf("Результат: %.2f Gal\n", result);
+            break;
+            
+        case 4:
+            printf("Км/ч -> М/с\n");
+            result = kmh_to_ms(random_value);
+            printf("Результат: %.2f M/S\n", result);
+            break;
+            
+        case 5:
+            printf("Джоули -> Калории\n");
+            result = joules_to_calories(random_value);
+            printf("Результат: %.2f Cal\n", result);
+            break;
+            
+        case 6:
+            printf("Часы -> Минуты\n");
+            result = hours_to_minutes(random_value);
+            printf("Результат: %.0f Min\n", result);
+            break;
+            
+        case 7:
+            printf("ГБ -> МБ\n");
+            result = gb_to_mb(random_value);
+            printf("Результат: %.0f MB\n", result);
+            break;
+            
+        case 8:
+            printf("PSI -> Бар (давление)\n");
+            result = psi_to_bar(random_value);
+            printf("Результат: %.2f Bar\n", result);
+            break;
+            
+        case 9:
+            printf("Градусы -> Радианы\n");
+            result = degrees_to_radians(random_value);
+            printf("Результат: %.4f Rad\n", result);
+            break;
+            
+        case 10:
+            printf("Рубли -> Доллары\n");
+            result = rubles_to_dollars(random_value);
+            printf("Результат: %.2f $\n", result);
+            break;
+    }
+    
+    printf("================================\n");
+    return result;
 }

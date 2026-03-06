@@ -13,6 +13,7 @@ void print_menu() {
     printf("8. PSI -> Бар (давление)\n");
     printf("9. Градусы -> Радианы\n");
     printf("10. Рубли -> Доллары\n");
+    printf("11. Случайное преобразование\n");  // Добавлено
     printf("0. Выход\n");
     printf("Выберите действие: ");
 }
@@ -26,6 +27,10 @@ int main() {
         if (scanf("%d", &choice) != 1) break;
         if (choice == 0) break;
 
+        if (choice == 11) {
+            random_conversion();
+            continue;
+        }
         printf("Введите значение: ");
         scanf("%f", &value);
 
@@ -87,10 +92,12 @@ int main() {
             case 7: printf("Результат: %.0f MB\n", gb_to_mb(value)); break;
             case 8: printf("Результат: %.2f Bar\n", psi_to_bar(value)); break;
             case 9: printf("Результат: %.4f Rad\n", degrees_to_radians(value)); break;
+            case 10: printf("Результат: %.2f $\n", rubles_to_dollars(value)); break;
             default: printf("Неверный выбор!\n");
         }
     }
 
     printf("Программа завершена.\n");
     return 0; 
+}
 }
