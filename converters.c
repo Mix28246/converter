@@ -3,52 +3,66 @@
 #include <string.h>
 #include <curl/curl.h>
 #include <stdlib.h>
-#include <time.h>
-#include <stdio.h>
 
+// Буфер для HTTP-запросов
 char buf[8192];
 
+// Внешнии C++ функции
+extern float get_random_value(void);
+extern int get_random_action(void);
+
+// Функция обратного вызова для CURL
 size_t write_cb(void *ptr, size_t size, size_t nmemb, void *userp) {
     strncat(buf, ptr, size * nmemb);
     return size * nmemb;
 }
 
+// Конвертация температуры
 float convert_to_fahrenheit(float celsius) {
     return (celsius * 9 / 5) + 32;
 }
 
+// Конвертация расстояния
 float meters_to_kilometers(float m) {
     return m / 1000.0;
 }
 
+// Конвертация объема
 float liters_to_gallons(float l) {
     return l * 0.264172;
 }
 
+// Конвертация скорости
 float kmh_to_ms(float kmh) {
     return kmh / 3.6;
 }
 
+// Конвертация энергии
 float joules_to_calories(float j) {
     return j * 0.238846;
 }
 
+// Конвертация времени
 float hours_to_minutes(float h) {
     return h * 60.0;
 }
 
+// Конвертация данных
 float gb_to_mb(float gb) {
     return gb * 1024.0;
 }
 
+// Конвертация давления
 float psi_to_bar(float psi) {
     return psi * 0.0689476;
 }
 
+// Конвертация углов
 float degrees_to_radians(float deg) {
     return deg * (3.14159 / 180.0);
 }
 
+// Конвертация валют (с курсом ЦБ РФ)
 float rubles_to_dollars(float r) {
     CURL *curl = curl_easy_init();
     buf[0] = 0;
@@ -66,16 +80,10 @@ float rubles_to_dollars(float r) {
     return r / kurs;
 }
 
+
 float random_conversion(void) {
-    static int initialized = 0;
-    if (!initialized) {
-        srand(time(NULL));
-        initialized = 1;
-    }
-    
-    float random_value = ((float)rand() / RAND_MAX) * 100.0f;
-    
-    int random_action = rand() % 10 + 1;
+    float random_value = get_random_value();
+    int random_action = get_random_action();
     
     printf("\n=== СЛУЧАЙНОЕ ПРЕОБРАЗОВАНИЕ ===\n");
     printf("Сгенерированное число: %.2f\n", random_value);
